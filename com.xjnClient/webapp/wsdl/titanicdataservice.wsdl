@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TitanicDataServiceService" targetNamespace="http://xjn.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xjn.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://xjn.com/" schemaLocation="titanicdataservice_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getPassengerAttributes">
+    <wsdl:part name="parameters" element="tns:getPassengerAttributes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountByAttributeResponse">
+    <wsdl:part name="parameters" element="tns:getCountByAttributeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountByAttribute">
+    <wsdl:part name="parameters" element="tns:getCountByAttribute">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassengerAttributesResponse">
+    <wsdl:part name="parameters" element="tns:getPassengerAttributesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TitanicDataService">
+    <wsdl:operation name="getCountByAttribute">
+      <wsdl:input name="getCountByAttribute" message="tns:getCountByAttribute">
+    </wsdl:input>
+      <wsdl:output name="getCountByAttributeResponse" message="tns:getCountByAttributeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPassengerAttributes">
+      <wsdl:input name="getPassengerAttributes" message="tns:getPassengerAttributes">
+    </wsdl:input>
+      <wsdl:output name="getPassengerAttributesResponse" message="tns:getPassengerAttributesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TitanicDataServiceServiceSoapBinding" type="tns:TitanicDataService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCountByAttribute">
+      <soap:operation soapAction="urn:GetCountByAttribute" style="document"/>
+      <wsdl:input name="getCountByAttribute">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountByAttributeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPassengerAttributes">
+      <soap:operation soapAction="urn:GetPassengerAttributes" style="document"/>
+      <wsdl:input name="getPassengerAttributes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassengerAttributesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TitanicDataServiceService">
+    <wsdl:port name="TitanicDataServicePort" binding="tns:TitanicDataServiceServiceSoapBinding">
+      <soap:address location="http://localhost:8080/com.xjn/services/TitanicDataServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
